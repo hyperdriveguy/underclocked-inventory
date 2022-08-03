@@ -1,6 +1,8 @@
 # underclocked-inventory
 Inventory System for the Underclocked Tech Company.
 
+Targeting Linux/Unix-like OSes only.
+
 ## Roadmap
 - [ ] Store information in SQLite database
     - [ ] Computer and other retail assets
@@ -34,7 +36,8 @@ Inventory System for the Underclocked Tech Company.
     - [ ] Seperate code for server and client side
     - [ ] Allow for multiple interface types (TUI, GUI, Web, Mobile)
     - [ ] Different user permissions
-- [ ] Generate and print QR codes for product IDs
+- [x] Generate and print QR codes for product IDs
 - [ ] Profit/loss overview
 - [ ] Out of stock notifications
 - [ ] Database tamper/corruption notification
+- [ ] Configuration files for settings
