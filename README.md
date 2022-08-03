@@ -23,10 +23,7 @@ Inventory System for the Underclocked Tech Company.
     - [ ] View individual information for all respective types
     - [ ] Fetch assets by product ID
     - [ ] Update existing information
-    - [ ] Profit/loss overview
-    - [ ] Generate store listing information
-    - [ ] Out of stock notifications
-    - [ ] Database tamper/corruption notification
+    - [ ] Generate online store listing information
     - [ ] Mouse support
 - [ ] Wordpress integration
     - [ ] Update status of sold or unsold retail products
@@ -37,3 +34,7 @@ Inventory System for the Underclocked Tech Company.
     - [ ] Seperate code for server and client side
     - [ ] Allow for multiple interface types (TUI, GUI, Web, Mobile)
     - [ ] Different user permissions
+- [ ] Generate and print QR codes for product IDs
+- [ ] Profit/loss overview
+- [ ] Out of stock notifications
+- [ ] Database tamper/corruption notification
