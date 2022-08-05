@@ -29,8 +29,9 @@ Targeting Linux/Unix-like OSes only.
   - [ ] Update existing information
   - [ ] Generate online store listing information
   - [ ] Mouse support
-- [ ] Wordpress integration
+- [ ] Online store integration
   - [ ] Use the [WooCommerce Rest API](https://woocommerce.github.io/woocommerce-rest-api-docs/)
+  - [ ] Sync stock and status with Ebay
   - [ ] Update status of sold or unsold retail products
   - [ ] Make products visible/invisible to customers
   - [ ] Syncronize products from inventory, including spec and price updates
