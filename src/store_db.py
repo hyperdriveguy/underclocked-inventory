@@ -31,6 +31,8 @@ def open_db(db_path):
             other_features TEXT,
             removed_components TEXT,
             added_components TEXT,
+            used_accessories TEXT,
+            pre_sale_servicing TEXT,
             initial_system_cost REAL,
             initial_system_purchase_date TEXT,
             shipping_cost REAL,
@@ -60,6 +62,7 @@ def open_db(db_path):
         case_id TEXT PRIMARY KEY,
         customer_id TEXT,
         quote_id TEXT,
+        product_id TEXT,
         quote_date TEXT,
         deadline_date TEXT,
         status TEXT,
@@ -73,10 +76,11 @@ def open_db(db_path):
     # Table for bought individual components
     db.execute(
         """CREATE TABLE IF NOT EXISTS Components(
-            component_purchase_id TEXT PRIMARY KEY,
+            component_id TEXT PRIMARY KEY,
             type TEXT,
             brand TEXT,
             specs TEXT,
+            pulled_from_product_id TEXT,
             total_cost REAL,
             quantity_purchased INTEGER,
             quantity_remaining INTEGER,
@@ -116,7 +120,8 @@ def open_db(db_path):
         """CREATE TABLE IF NOT EXISTS OneTimeServiceCosts(
             service_id TEXT PRIMARY KEY,
             description TEXT,
-            cost REAL)
+            cost REAL,
+            partner_id TEXT)
         """
     )
 
@@ -140,5 +145,18 @@ def open_db(db_path):
             billing_state_province TEXT,
             billing_zip_code TEXT,
             billing_shipping_same INTEGER)
+        """
+    )
+
+    # Table for partners, consultants
+    db.execute(
+        """CREATE TABLE IF NOT EXISTS PartnersConsultants(
+            partner_id TEXT PRIMARY KEY,
+            first_name TEXT,
+            last_name TEXT,
+            email TEXT,
+            phone TEXT,
+            organization TEXT,
+            active INTEGER)
         """
     )
