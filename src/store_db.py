@@ -1,4 +1,7 @@
 import sqlite3
+import json
+import datetime
+
 
 def open_db(db_path):
     """Open the Database and ensure it exists.
@@ -10,11 +13,22 @@ def open_db(db_path):
         db (sqlite3.Connection): SQLite database connection
     """
     sqlite3.register_adapter(bool, int)
-    sqlite3.register_converter("BOOL", lambda val: bool(int(val)))
+    sqlite3.register_converter('BOOL', lambda val: bool(int(val)))
 
-    # sqlite3.register_adapter()
+    sqlite3.register_adapter(dict, json.dumps)
+    sqlite3.register_adapter(list, json.dumps)
+    sqlite3.register_adapter(tuple, json.dumps)
+    sqlite3.register_converter('JSON', json.loads)
+    sqlite3.register_converter('LIST', json.loads)
 
-    db = sqlite3.Connection(db_path)
+    sqlite3.register_adapter(datetime.date, lambda val: val.isoformat())
+    sqlite3.register_converter('DATE', datetime.date.fromisoformat)
+
+    sqlite3.register_adapter(datetime.datetime, lambda val: val.isoformat())
+    sqlite3.register_converter('TIMESTAMP', datetime.datetime.fromisoformat)
+
+    db = sqlite3.connect(db_path, detect_types=sqlite3.PARSE_DECLTYPES)
+
     # Tables for end products
     # --------------------------------
 
@@ -25,26 +39,26 @@ def open_db(db_path):
             brand TEXT,
             model TEXT,
             form_factor TEXT,
-            processor TEXT,
-            memory TEXT,
-            graphics TEXT,
-            storage TEXT,
-            operating_system TEXT,
-            connectivity TEXT,
-            ports TEXT,
-            display TEXT,
-            other_features TEXT,
-            removed_components TEXT,
-            added_components TEXT,
-            used_accessories TEXT,
-            pre_sale_servicing TEXT,
+            processor JSON,
+            memory JSON,
+            graphics JSON,
+            storage JSON,
+            operating_system JSON,
+            connectivity JSON,
+            ports JSON,
+            display JSON,
+            other_features JSON,
+            removed_components LIST,
+            added_components LIST,
+            used_accessories LIST,
+            pre_sale_servicing LIST,
             initial_system_cost REAL,
-            initial_system_purchase_date TEXT,
+            initial_system_purchase_date DATE,
             shipping_cost REAL,
             sale_price REAL,
-            ready_to_sell INTEGER,
-            sold INTEGER,
-            sell_date TEXT)
+            ready_to_sell BOOL,
+            sold BOOL,
+            sell_date DATE)
         """
     )
 
@@ -53,8 +67,8 @@ def open_db(db_path):
         """CREATE TABLE IF NOT EXISTS ServiceQuotes(
         quote_id TEXT PRIMARY KEY,
         description TEXT,
-        required_accessories TEXT,
-        required_components TEXT,
+        required_accessories LIST,
+        required_components LIST,
         quote_price REAL)
         """
     )
@@ -69,10 +83,10 @@ def open_db(db_path):
         quote_id TEXT,
         product_id TEXT,
         outsourced_service_id TEXT,
-        quote_date TEXT,
-        deadline_date TEXT,
+        quote_date DATE,
+        deadline_date DATE,
         status TEXT,
-        completed_date TEXT)
+        completed_date DATE)
         """
     )
 
@@ -90,7 +104,7 @@ def open_db(db_path):
             total_cost REAL,
             quantity_purchased INTEGER,
             quantity_remaining INTEGER,
-            purchase_date TEXT,
+            purchase_date DATE,
             purchase_location TEXT)
         """
     )
@@ -103,7 +117,7 @@ def open_db(db_path):
             total_cost REAL,
             quantity_purchased INTEGER,
             quantity_remaining INTEGER,
-            purchase_date TEXT,
+            purchase_date DATE,
             purchase_location TEXT)
         """
     )
@@ -115,9 +129,9 @@ def open_db(db_path):
             description TEXT,
             payment_cost REAL,
             payment_frequency TEXT,
-            payment_dates TEXT,
-            active INTEGER,
-            next_payment_date TEXT)
+            payment_dates LIST,
+            active BOOL,
+            next_payment_date DATE)
         """
     )
 
@@ -155,6 +169,6 @@ def open_db(db_path):
             email TEXT,
             phone TEXT,
             organization TEXT,
-            active INTEGER)
+            active BOOL)
         """
     )
