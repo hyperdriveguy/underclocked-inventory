@@ -9,6 +9,11 @@ def open_db(db_path):
     Returns:
         db (sqlite3.Connection): SQLite database connection
     """
+    sqlite3.register_adapter(bool, int)
+    sqlite3.register_converter("BOOL", lambda val: bool(int(val)))
+
+    # sqlite3.register_adapter()
+
     db = sqlite3.Connection(db_path)
     # Tables for end products
     # --------------------------------
@@ -63,6 +68,7 @@ def open_db(db_path):
         customer_id TEXT,
         quote_id TEXT,
         product_id TEXT,
+        outsourced_service_id TEXT,
         quote_date TEXT,
         deadline_date TEXT,
         status TEXT,
@@ -135,16 +141,8 @@ def open_db(db_path):
             first_name TEXT,
             last_name TEXT,
             email TEXT,
-            phone TEXT,
-            shipping_street_address TEXT,
-            shipping_city TEXT,
-            shipping_state_province TEXT,
-            shipping_zip_code TEXT,
-            billing_street_address TEXT,
-            billing_city TEXT,
-            billing_state_province TEXT,
-            billing_zip_code TEXT,
-            billing_shipping_same INTEGER)
+            phone TEXT
+            organization TEXT)
         """
     )
 
