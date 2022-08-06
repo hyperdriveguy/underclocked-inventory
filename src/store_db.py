@@ -1,6 +1,37 @@
 import sqlite3
 import json
-import datetime
+from datetime import datetime, date
+
+
+class DateList:
+
+    def __init__(self, iso_date_list):
+        self._internal_set = set(map(date.fromisoformat, remove_dups))
+
+    def add(self, item: date):
+        if item not in self._internal_set:
+            self._internal_set.add(item)
+    
+    def remove(self, item: date):
+        self._internal_set.remove(item)
+    
+    def in_order(self):
+        return list(sorted(self._internal_set))
+    
+    def __sizeof__(self):
+        return len(self._internal_set)
+
+    def __str__(self):
+        return str(self._internal_set)
+    
+    def __conform__(self, protocol):
+        if protocol is sqlite3.PrepareProtocol:
+            return json.dumps(list(self._internal_set))
+
+
+def adapt_date_list(date_list):
+    date_string_list = list(map(lambda x: x.isoformat(), date_list))
+    return json.dumps(date_string_list)
 
 
 def open_db(db_path):
@@ -21,11 +52,13 @@ def open_db(db_path):
     sqlite3.register_converter('JSON', json.loads)
     sqlite3.register_converter('LIST', json.loads)
 
-    sqlite3.register_adapter(datetime.date, lambda val: val.isoformat())
-    sqlite3.register_converter('DATE', datetime.date.fromisoformat)
+    sqlite3.register_adapter(date, lambda val: val.isoformat())
+    sqlite3.register_converter('DATE', date.fromisoformat)
 
-    sqlite3.register_adapter(datetime.datetime, lambda val: val.isoformat())
-    sqlite3.register_converter('TIMESTAMP', datetime.datetime.fromisoformat)
+    sqlite3.register_adapter(datetime, lambda val: val.isoformat())
+    sqlite3.register_converter('TIMESTAMP', datetime.fromisoformat)
+
+    sqlite3.register_converter('DATELIST', lambda d: DateList(d))
 
     db = sqlite3.connect(db_path, detect_types=sqlite3.PARSE_DECLTYPES)
 
@@ -129,7 +162,7 @@ def open_db(db_path):
             description TEXT,
             payment_cost REAL,
             payment_frequency TEXT,
-            payment_dates LIST,
+            payment_dates DATELIST,
             active BOOL,
             next_payment_date DATE)
         """
