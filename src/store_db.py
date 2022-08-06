@@ -70,6 +70,8 @@ def open_db(db_path):
 
     db = sqlite3.connect(db_path, detect_types=sqlite3.PARSE_DECLTYPES)
 
+
+def create_tables(db):
     # Tables for end products
     # --------------------------------
 
