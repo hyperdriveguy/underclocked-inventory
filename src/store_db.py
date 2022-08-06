@@ -8,12 +8,20 @@ class DateList:
     def __init__(self, iso_date_list):
         self._internal_set = set(map(date.fromisoformat, remove_dups))
 
-    def add(self, item: date):
+    def add_date(self, item: date):
         if item not in self._internal_set:
             self._internal_set.add(item)
     
-    def remove(self, item: date):
+    def remove_date(self, item: date):
         self._internal_set.remove(item)
+    
+    def add(self, year: int, month: int, day: int):
+        to_add = date(year, month, day)
+        self.add_date(to_add)
+    
+    def remove(self, year: int, month: int, day: int):
+        to_remove = date(year, month, day)
+        self.remove_date(to_remove)
     
     def in_order(self):
         return list(sorted(self._internal_set))
