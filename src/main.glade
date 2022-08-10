@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.38.2 -->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <object class="GtkListStore" id="liststore1">
+    <columns>
+      <!-- column-name Product ID -->
+      <column type="gchar"/>
+      <!-- column-name Brand -->
+      <column type="gchar"/>
+      <!-- column-name Model -->
+      <column type="gchar"/>
+      <!-- column-name Form Factor -->
+      <column type="gchar"/>
+      <!-- column-name Processor -->
+      <column type="gchar"/>
+      <!-- column-name Memory Type -->
+      <column type="gchar"/>
+      <!-- column-name Memory Capacity -->
+      <column type="gulong"/>
+      <!-- column-name Graphics -->
+      <column type="gchar"/>
+      <!-- column-name Storage -->
+      <column type="gchar"/>
+      <!-- column-name Operating System Type -->
+      <column type="gchar"/>
+      <!-- column-name Operating System Version -->
+      <column type="gchar"/>
+      <!-- column-name Connectivity -->
+      <column type="gchar"/>
+      <!-- column-name Ports -->
+      <column type="gchar"/>
+      <!-- column-name Display -->
+      <column type="gchar"/>
+      <!-- column-name Other Features -->
+      <column type="gchar"/>
+      <!-- column-name Initial System Cost -->
+      <column type="gfloat"/>
+      <!-- column-name Initial System Purchase Date -->
+      <column type="gchar"/>
+      <!-- column-name Shipping Cost -->
+      <column type="gfloat"/>
+      <!-- column-name Sale Price -->
+      <column type="gfloat"/>
+      <!-- column-name Ready to Sell -->
+      <column type="gboolean"/>
+      <!-- column-name Sold -->
+      <column type="gboolean"/>
+      <!-- column-name Sell Date -->
+      <column type="gchar"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0"/>
+        <col id="1"/>
+        <col id="2"/>
+        <col id="3"/>
+        <col id="4"/>
+        <col id="5"/>
+        <col id="6">1800</col>
+        <col id="7"/>
+        <col id="8"/>
+        <col id="9"/>
+        <col id="10"/>
+        <col id="11"/>
+        <col id="12"/>
+        <col id="13"/>
+        <col id="14"/>
+        <col id="15">0</col>
+        <col id="16"/>
+        <col id="17">1500</col>
+        <col id="18">3300</col>
+        <col id="19">True</col>
+        <col id="20">True</col>
+        <col id="21"/>
+      </row>
+    </data>
+  </object>
+  <object class="GtkWindow">
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkToolbar">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkNotebook">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <child>
+              <object class="GtkNotebook">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <child>
+                  <object class="GtkTreeView">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="model">liststore1</property>
+                    <property name="reorderable">True</property>
+                    <property name="search-column">1</property>
+                    <property name="fixed-height-mode">True</property>
+                    <property name="enable-grid-lines">horizontal</property>
+                    <property name="tooltip-column">0</property>
+                    <child internal-child="selection">
+                      <object class="GtkTreeSelection"/>
+                    </child>
+                  </object>
+                </child>
+                <child type="tab">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Computers</property>
+                  </object>
+                  <packing>
+                    <property name="tab-fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child type="tab">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Offered Services</property>
+                  </object>
+                  <packing>
+                    <property name="position">1</property>
+                    <property name="tab-fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child type="tab">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">page 3</property>
+                  </object>
+                  <packing>
+                    <property name="position">2</property>
+                    <property name="tab-fill">False</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">End Products</property>
+              </object>
+              <packing>
+                <property name="tab-fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Internal Assets</property>
+              </object>
+              <packing>
+                <property name="position">1</property>
+                <property name="tab-fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Used Services</property>
+              </object>
+              <packing>
+                <property name="position">2</property>
+                <property name="tab-fill">False</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkStatusbar">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="margin-left">10</property>
+            <property name="margin-right">10</property>
+            <property name="margin-start">10</property>
+            <property name="margin-end">10</property>
+            <property name="margin-top">6</property>
+            <property name="margin-bottom">6</property>
+            <property name="orientation">vertical</property>
+            <property name="spacing">2</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">7</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
