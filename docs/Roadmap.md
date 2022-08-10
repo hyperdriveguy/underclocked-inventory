@@ -12,17 +12,17 @@
   - [ ] Automatic DB backup
   - [ ] DB verification (mdsum or shasum) and audit logs
   - [ ] Eventual transition to a different SQL database for network access
-- [ ] Terminal UI
+- [ ] GUI (GTK, Glade)
   - [ ] Input retail asset information
   - [ ] Input itemized expenses
   - [ ] Input services
   - [ ] Add customer information
   - [ ] View all retail assets via an overview
-  - [ ] View individual information for all respective types
-  - [ ] Fetch assets by product ID
+    - [ ] Sort and search for items not just by ID
+  - [ ] View individual information for all types of information stored
+  - [ ] Fetch assets by product ID (Scanner usage)
   - [ ] Update existing information
   - [ ] Generate online store listing information
-  - [ ] Mouse support
 - [ ] Online store integration
   - [ ] Use the [WooCommerce Rest API](https://woocommerce.github.io/woocommerce-rest-api-docs/)
   - [ ] Sync stock and status with Ebay
@@ -34,7 +34,7 @@
   - [ ] Different user permissions
   - [ ] Seperate code for server and client side
 - [ ] Allow for multiple interface types (TUI, GUI, Web, Mobile)
-- [X] Generate and print QR codes for product IDs
+- [X] Generate and print QR codes for product IDs (Untested, needs to use GUI dialogs)
 - [ ] Profit/loss overview
 - [ ] Out of stock notifications
 - [ ] Database tamper/corruption notification
