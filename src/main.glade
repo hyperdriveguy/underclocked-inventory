@@ -2,82 +2,41 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <object class="GtkListStore" id="liststore1">
+  <object class="GtkListStore" id="product_list_model">
     <columns>
-      <!-- column-name Product ID -->
+      <!-- column-name gchar1 -->
       <column type="gchar"/>
-      <!-- column-name Brand -->
-      <column type="gchar"/>
-      <!-- column-name Model -->
-      <column type="gchar"/>
-      <!-- column-name Form Factor -->
-      <column type="gchar"/>
-      <!-- column-name Processor -->
-      <column type="gchar"/>
-      <!-- column-name Memory Type -->
-      <column type="gchar"/>
-      <!-- column-name Memory Capacity -->
-      <column type="gulong"/>
-      <!-- column-name Graphics -->
-      <column type="gchar"/>
-      <!-- column-name Storage -->
-      <column type="gchar"/>
-      <!-- column-name Operating System Type -->
-      <column type="gchar"/>
-      <!-- column-name Operating System Version -->
-      <column type="gchar"/>
-      <!-- column-name Connectivity -->
-      <column type="gchar"/>
-      <!-- column-name Ports -->
-      <column type="gchar"/>
-      <!-- column-name Display -->
-      <column type="gchar"/>
-      <!-- column-name Other Features -->
-      <column type="gchar"/>
-      <!-- column-name Initial System Cost -->
-      <column type="gfloat"/>
-      <!-- column-name Initial System Purchase Date -->
-      <column type="gchar"/>
-      <!-- column-name Shipping Cost -->
-      <column type="gfloat"/>
-      <!-- column-name Sale Price -->
-      <column type="gfloat"/>
-      <!-- column-name Ready to Sell -->
+      <!-- column-name gint1 -->
+      <column type="gint"/>
+      <!-- column-name gchararray1 -->
+      <column type="gchararray"/>
+      <!-- column-name gboolean1 -->
       <column type="gboolean"/>
-      <!-- column-name Sold -->
-      <column type="gboolean"/>
-      <!-- column-name Sell Date -->
-      <column type="gchar"/>
     </columns>
     <data>
       <row>
-        <col id="0"/>
-        <col id="1"/>
-        <col id="2"/>
-        <col id="3"/>
-        <col id="4"/>
-        <col id="5"/>
-        <col id="6">1800</col>
-        <col id="7"/>
-        <col id="8"/>
-        <col id="9"/>
-        <col id="10"/>
-        <col id="11"/>
-        <col id="12"/>
-        <col id="13"/>
-        <col id="14"/>
-        <col id="15">0</col>
-        <col id="16"/>
-        <col id="17">1500</col>
-        <col id="18">3300</col>
-        <col id="19">True</col>
-        <col id="20">True</col>
-        <col id="21"/>
+        <col id="0">s</col>
+        <col id="1">23323</col>
+        <col id="2" translatable="yes">asdfasfdsafdasdfasdffaafsdafsd</col>
+        <col id="3">True</col>
+      </row>
+      <row>
+        <col id="0">z</col>
+        <col id="1">0</col>
+        <col id="2" translatable="yes">asdfsadfa</col>
+        <col id="3">False</col>
+      </row>
+      <row>
+        <col id="0">g</col>
+        <col id="1">44</col>
+        <col id="2" translatable="yes">zzazz</col>
+        <col id="3">True</col>
       </row>
     </data>
   </object>
-  <object class="GtkWindow">
+  <object class="GtkWindow" id="main_window">
     <property name="can-focus">False</property>
+    <signal name="destroy" handler="on_destroy" swapped="no"/>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
@@ -103,17 +62,113 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <child>
-                  <object class="GtkTreeView">
+                  <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="model">liststore1</property>
-                    <property name="reorderable">True</property>
-                    <property name="search-column">1</property>
-                    <property name="fixed-height-mode">True</property>
-                    <property name="enable-grid-lines">horizontal</property>
-                    <property name="tooltip-column">0</property>
-                    <child internal-child="selection">
-                      <object class="GtkTreeSelection"/>
+                    <property name="can-focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkToolbar">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScrolledWindow">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="shadow-type">in</property>
+                        <child>
+                          <object class="GtkTreeView" id="computer_product_view">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="model">product_list_model</property>
+                            <property name="reorderable">True</property>
+                            <property name="search-column">0</property>
+                            <property name="fixed-height-mode">True</property>
+                            <property name="show-expanders">False</property>
+                            <property name="enable-grid-lines">both</property>
+                            <child internal-child="selection">
+                              <object class="GtkTreeSelection"/>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn">
+                                <property name="resizable">True</property>
+                                <property name="sizing">fixed</property>
+                                <property name="title" translatable="yes">Character</property>
+                                <property name="clickable">True</property>
+                                <property name="sort-indicator">True</property>
+                                <property name="sort-column-id">0</property>
+                                <child>
+                                  <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                                  <attributes>
+                                    <attribute name="text">0</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn">
+                                <property name="resizable">True</property>
+                                <property name="sizing">fixed</property>
+                                <property name="title" translatable="yes">Integer</property>
+                                <property name="clickable">True</property>
+                                <property name="sort-indicator">True</property>
+                                <property name="sort-column-id">1</property>
+                                <child>
+                                  <object class="GtkCellRendererText"/>
+                                  <attributes>
+                                    <attribute name="text">1</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn">
+                                <property name="resizable">True</property>
+                                <property name="sizing">fixed</property>
+                                <property name="title" translatable="yes">String</property>
+                                <property name="clickable">True</property>
+                                <property name="sort-indicator">True</property>
+                                <property name="sort-column-id">2</property>
+                                <child>
+                                  <object class="GtkCellRendererText"/>
+                                  <attributes>
+                                    <attribute name="text">2</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn">
+                                <property name="resizable">True</property>
+                                <property name="sizing">fixed</property>
+                                <property name="title" translatable="yes">Bool</property>
+                                <property name="clickable">True</property>
+                                <property name="sort-indicator">True</property>
+                                <property name="sort-column-id">3</property>
+                                <child>
+                                  <object class="GtkCellRendererToggle">
+                                    <signal name="toggled" handler="on_bool_toggle" swapped="no"/>
+                                  </object>
+                                  <attributes>
+                                    <attribute name="active">3</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
                     </child>
                   </object>
                 </child>
@@ -128,7 +183,13 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkLabel">
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">yeet</property>
+                  </object>
+                  <packing>
+                    <property name="position">1</property>
+                  </packing>
                 </child>
                 <child type="tab">
                   <object class="GtkLabel">
@@ -138,20 +199,6 @@
                   </object>
                   <packing>
                     <property name="position">1</property>
-                    <property name="tab-fill">False</property>
-                  </packing>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child type="tab">
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">page 3</property>
-                  </object>
-                  <packing>
-                    <property name="position">2</property>
                     <property name="tab-fill">False</property>
                   </packing>
                 </child>
@@ -168,7 +215,14 @@
               </packing>
             </child>
             <child>
-              <placeholder/>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">label</property>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
             </child>
             <child type="tab">
               <object class="GtkLabel">
@@ -182,7 +236,14 @@
               </packing>
             </child>
             <child>
-              <placeholder/>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">label</property>
+              </object>
+              <packing>
+                <property name="position">2</property>
+              </packing>
             </child>
             <child type="tab">
               <object class="GtkLabel">
@@ -197,7 +258,7 @@
             </child>
           </object>
           <packing>
-            <property name="expand">False</property>
+            <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">1</property>
           </packing>
@@ -218,6 +279,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
+            <property name="pack-type">end</property>
             <property name="position">7</property>
           </packing>
         </child>
