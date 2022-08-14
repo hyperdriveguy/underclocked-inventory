@@ -4,38 +4,75 @@
   <requires lib="gtk+" version="3.24"/>
   <object class="GtkListStore" id="product_list_model">
     <columns>
-      <!-- column-name gchar1 -->
-      <column type="gchar"/>
-      <!-- column-name gint1 -->
-      <column type="gint"/>
-      <!-- column-name gchararray1 -->
+      <!-- column-name Product -->
       <column type="gchararray"/>
-      <!-- column-name gboolean1 -->
+      <!-- column-name Brand -->
+      <column type="gchararray"/>
+      <!-- column-name Model -->
+      <column type="gchararray"/>
+      <!-- column-name Form Factor -->
+      <column type="gchararray"/>
+      <!-- column-name Processor -->
+      <column type="gchararray"/>
+      <!-- column-name Memory -->
+      <column type="gchararray"/>
+      <!-- column-name Graphics -->
+      <column type="gchararray"/>
+      <!-- column-name Storage -->
+      <column type="gchararray"/>
+      <!-- column-name Operating System -->
+      <column type="gchararray"/>
+      <!-- column-name Connectivity -->
+      <column type="gchararray"/>
+      <!-- column-name Ports -->
+      <column type="gchararray"/>
+      <!-- column-name Other Features -->
+      <column type="gchararray"/>
+      <!-- column-name Initial Cost -->
+      <column type="gfloat"/>
+      <!-- column-name Purchase Date -->
+      <column type="gchararray"/>
+      <!-- column-name Shipping Cost -->
+      <column type="gfloat"/>
+      <!-- column-name Sale Price -->
+      <column type="gfloat"/>
+      <!-- column-name Ready to Sell -->
       <column type="gboolean"/>
+      <!-- column-name Sold -->
+      <column type="gboolean"/>
+      <!-- column-name Sell Date -->
+      <column type="gchararray"/>
     </columns>
     <data>
       <row>
-        <col id="0">s</col>
-        <col id="1">23323</col>
-        <col id="2" translatable="yes">asdfasfdsafdasdfasdffaafsdafsd</col>
-        <col id="3">True</col>
-      </row>
-      <row>
-        <col id="0">z</col>
-        <col id="1">0</col>
-        <col id="2" translatable="yes">asdfsadfa</col>
-        <col id="3">False</col>
-      </row>
-      <row>
-        <col id="0">g</col>
-        <col id="1">44</col>
-        <col id="2" translatable="yes">zzazz</col>
-        <col id="3">True</col>
+        <col id="0" translatable="yes">HP-ED-001</col>
+        <col id="1" translatable="yes">HP</col>
+        <col id="2" translatable="yes">EliteDesk 800 G1 USDT</col>
+        <col id="3" translatable="yes">Desktop</col>
+        <col id="4" translatable="yes">Intel(R) Core(TM) i7-4770S CPU @ 3.10GHz, 3101 Mhz, 4 Core(s), 8 Logical Processor(s) </col>
+        <col id="5" translatable="yes">8GB DDR3</col>
+        <col id="6" translatable="yes">Intel HD Graphics 4600 2GB GPU Memory</col>
+        <col id="7" translatable="yes">120GB SSD</col>
+        <col id="8" translatable="yes">Windows 10 Pro</col>
+        <col id="9" translatable="yes"/>
+        <col id="10" translatable="yes">4 USB 2.0, 2 USB 3.1, 2 DisplayPort</col>
+        <col id="11" translatable="yes"/>
+        <col id="12">43</col>
+        <col id="13" translatable="yes">2022-04-22</col>
+        <col id="14">21.25</col>
+        <col id="15">127.77999877929688</col>
+        <col id="16">True</col>
+        <col id="17">False</col>
+        <col id="18" translatable="yes"/>
       </row>
     </data>
   </object>
   <object class="GtkWindow" id="main_window">
     <property name="can-focus">False</property>
+    <property name="title" translatable="yes">Underclocked Inventory</property>
+    <property name="role">main</property>
+    <property name="icon">Underclocked-Tech-Logo.png</property>
+    <property name="startup-id">underclocked_main</property>
     <signal name="destroy" handler="on_destroy" swapped="no"/>
     <child>
       <object class="GtkBox">
@@ -97,66 +134,14 @@
                             </child>
                             <child>
                               <object class="GtkTreeViewColumn">
-                                <property name="resizable">True</property>
                                 <property name="sizing">fixed</property>
-                                <property name="title" translatable="yes">Character</property>
-                                <property name="clickable">True</property>
-                                <property name="sort-indicator">True</property>
-                                <property name="sort-column-id">0</property>
+                                <property name="title" translatable="yes">ID</property>
                                 <child>
-                                  <object class="GtkCellRendererText" id="cellrenderertext1"/>
-                                  <attributes>
-                                    <attribute name="text">0</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkTreeViewColumn">
-                                <property name="resizable">True</property>
-                                <property name="sizing">fixed</property>
-                                <property name="title" translatable="yes">Integer</property>
-                                <property name="clickable">True</property>
-                                <property name="sort-indicator">True</property>
-                                <property name="sort-column-id">1</property>
-                                <child>
-                                  <object class="GtkCellRendererText"/>
-                                  <attributes>
-                                    <attribute name="text">1</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkTreeViewColumn">
-                                <property name="resizable">True</property>
-                                <property name="sizing">fixed</property>
-                                <property name="title" translatable="yes">String</property>
-                                <property name="clickable">True</property>
-                                <property name="sort-indicator">True</property>
-                                <property name="sort-column-id">2</property>
-                                <child>
-                                  <object class="GtkCellRendererText"/>
-                                  <attributes>
-                                    <attribute name="text">2</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkTreeViewColumn">
-                                <property name="resizable">True</property>
-                                <property name="sizing">fixed</property>
-                                <property name="title" translatable="yes">Bool</property>
-                                <property name="clickable">True</property>
-                                <property name="sort-indicator">True</property>
-                                <property name="sort-column-id">3</property>
-                                <child>
-                                  <object class="GtkCellRendererToggle">
-                                    <signal name="toggled" handler="on_bool_toggle" swapped="no"/>
+                                  <object class="GtkCellRendererText">
+                                    <property name="editable">True</property>
                                   </object>
                                   <attributes>
-                                    <attribute name="active">3</attribute>
+                                    <attribute name="text">0</attribute>
                                   </attributes>
                                 </child>
                               </object>
