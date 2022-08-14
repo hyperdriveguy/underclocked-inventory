@@ -24,9 +24,10 @@ class Handler:
     #     print("Hello World!")
 
     def on_bool_toggle(self, received, tree_path):
-        print(received)
-        print(tree_path)
-        received.set_radio(not received.get_radio())
+        print('received', received)
+        print('path', tree_path)
+        print('model', computer_list_store[tree_path][3])
+        computer_list_store[tree_path][3] = not computer_list_store[tree_path][3]
 
 
 builder.connect_signals(Handler())
