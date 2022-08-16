@@ -9,6 +9,26 @@ builder.add_from_file("main.glade")
 
 window = builder.get_object("main_window")
 computer_list_store = builder.get_object("product_list_model")
+computer_list_store.append(['fake product ID',
+                            'fake brand',
+                            'fake model',
+                            'fake form factor',
+                            'fake processor',
+                            'fake memory type 8000000000 GB',
+                            'fake graphics',
+                            'fake storage',
+                            'fake OS type fake version',
+                            'fake connections',
+                            'fake ports',
+                            'fake display',
+                            'fake other features',
+                            420.69,
+                            '1969-04-01',
+                            20.00,
+                            800.21,
+                            True,
+                            False,
+                            ''])
 print(computer_list_store)
 for i in computer_list_store:
     print(i[:])
@@ -23,6 +43,10 @@ class Handler:
     # def onButtonPressed(self, button):
     #     print("Hello World!")
 
+    def on_col_click(self, data):
+        print('Clicked Connectivity column')
+        print(data)
+
     def on_bool_toggle(self, received, tree_path):
         print('received', received)
         print('path', tree_path)
@@ -31,7 +55,6 @@ class Handler:
 
 
 builder.connect_signals(Handler())
-# computer_list_store.append(['fake product ID', 'fake brand', 'fake model', 'fake form factor', 'fake processor', 'fake memory type', 8000000000, 'fake graphics', 'fake storage', 'fake OS type', 'fake version', 'fake connections', 'fake ports', 'fake display', 'fake other features', 420.69, '1969-04-01', 20.00, 800.21, True, False, None])
 window.show_all()
 
 Gtk.main()
