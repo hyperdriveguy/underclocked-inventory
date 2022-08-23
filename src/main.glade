@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 -->
+<!-- Generated with glade 3.40.0 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
   <object class="GtkListStore" id="product_list_model">
     <columns>
-      <!-- column-name Product ID -->
+      <!-- column-name Product -->
       <column type="gchararray"/>
       <!-- column-name Brand -->
       <column type="gchararray"/>
       <!-- column-name Model -->
       <column type="gchararray"/>
-      <!-- column-name Form Factor -->
+      <!-- column-name Form -->
       <column type="gchararray"/>
       <!-- column-name Processor -->
       <column type="gchararray"/>
@@ -22,28 +22,10 @@
       <column type="gchararray"/>
       <!-- column-name Operating -->
       <column type="gchararray"/>
-      <!-- column-name Connectivity -->
-      <column type="gchararray"/>
-      <!-- column-name Ports -->
-      <column type="gchararray"/>
       <!-- column-name Display -->
       <column type="gchararray"/>
-      <!-- column-name Other Features -->
-      <column type="gchararray"/>
-      <!-- column-name Initial Cost -->
-      <column type="gfloat"/>
-      <!-- column-name Purchase Date -->
-      <column type="gchararray"/>
-      <!-- column-name Shipping Cost -->
-      <column type="gfloat"/>
-      <!-- column-name Sale Price -->
-      <column type="gfloat"/>
-      <!-- column-name Ready to Sell -->
+      <!-- column-name Ready for Sale -->
       <column type="gboolean"/>
-      <!-- column-name Sold -->
-      <column type="gboolean"/>
-      <!-- column-name Sell Date -->
-      <column type="gchararray"/>
     </columns>
     <data>
       <row>
@@ -57,16 +39,7 @@
         <col id="7" translatable="yes">120GB SSD</col>
         <col id="8" translatable="yes">Windows 10 Pro</col>
         <col id="9" translatable="yes"/>
-        <col id="10" translatable="yes">4 USB 2.0, 2 USB 3.1, 2 DisplayPort</col>
-        <col id="11" translatable="yes"/>
-        <col id="12" translatable="yes"/>
-        <col id="13">43</col>
-        <col id="14" translatable="yes">2022-04-22</col>
-        <col id="15">21.25</col>
-        <col id="16">127.77999877929688</col>
-        <col id="17">True</col>
-        <col id="18">False</col>
-        <col id="19" translatable="yes"/>
+        <col id="10">True</col>
       </row>
     </data>
   </object>
@@ -301,11 +274,10 @@
                               <object class="GtkTreeViewColumn">
                                 <property name="resizable">True</property>
                                 <property name="sizing">fixed</property>
-                                <property name="title" translatable="yes">Connectivity</property>
+                                <property name="title" translatable="yes">Display</property>
                                 <property name="clickable">True</property>
                                 <property name="sort-indicator">True</property>
                                 <property name="sort-column-id">9</property>
-                                <signal name="clicked" handler="on_col_click" swapped="no"/>
                                 <child>
                                   <object class="GtkCellRendererText">
                                     <property name="editable">True</property>
@@ -320,16 +292,16 @@
                               <object class="GtkTreeViewColumn">
                                 <property name="resizable">True</property>
                                 <property name="sizing">fixed</property>
-                                <property name="title" translatable="yes">Ports</property>
+                                <property name="title" translatable="yes">Ready for Sale</property>
                                 <property name="clickable">True</property>
                                 <property name="sort-indicator">True</property>
                                 <property name="sort-column-id">10</property>
                                 <child>
-                                  <object class="GtkCellRendererText">
-                                    <property name="editable">True</property>
+                                  <object class="GtkCellRendererToggle">
+                                    <signal name="toggled" handler="on_bool_toggle" swapped="no"/>
                                   </object>
                                   <attributes>
-                                    <attribute name="text">10</attribute>
+                                    <attribute name="active">10</attribute>
                                   </attributes>
                                 </child>
                               </object>

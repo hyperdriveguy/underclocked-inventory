@@ -18,17 +18,8 @@ computer_list_store.append(['fake product ID',
                             'fake graphics',
                             'fake storage',
                             'fake OS type fake version',
-                            'fake connections',
-                            'fake ports',
                             'fake display',
-                            'fake other features',
-                            420.69,
-                            '1969-04-01',
-                            20.00,
-                            800.21,
-                            True,
-                            False,
-                            ''])
+                            False])
 print(computer_list_store)
 for i in computer_list_store:
     print(i[:])
@@ -46,12 +37,23 @@ class Handler:
     def on_col_click(self, data):
         print('Clicked Connectivity column')
         print(data)
+        computer_list_store.append(['fake product ID',
+                                    'fake brand',
+                                    'fake model',
+                                    'fake form factor',
+                                    'fake processor',
+                                    'fake memory type 8000000000 GB',
+                                    'fake graphics',
+                                    'fake storage',
+                                    'fake OS type fake version',
+                                    'fake display',
+                                    False])
 
     def on_bool_toggle(self, received, tree_path):
         print('received', received)
         print('path', tree_path)
-        print('model', computer_list_store[tree_path][3])
-        computer_list_store[tree_path][3] = not computer_list_store[tree_path][3]
+        print('model', computer_list_store[tree_path][-1])
+        computer_list_store[tree_path][-1] = not computer_list_store[tree_path][-1]
 
 
 builder.connect_signals(Handler())
