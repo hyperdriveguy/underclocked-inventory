@@ -54,7 +54,14 @@ class Handler:
         print('path', tree_path)
         print('model', computer_list_store[tree_path][-1])
         computer_list_store[tree_path][-1] = not computer_list_store[tree_path][-1]
-
+    
+    def on_product_select(self, tree_view, row_index, tree_view_column):
+        print('Product selected:')
+        print(tree_view, row, col)
+        print(computer_list_store[row])
+        for c in computer_list_store[row]:
+            print(c)
+        print('-' * 35)
 
 builder.connect_signals(Handler())
 window.show_all()
