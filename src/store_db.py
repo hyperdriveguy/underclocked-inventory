@@ -70,8 +70,10 @@ def open_db(db_path):
 
     db = sqlite3.connect(db_path, detect_types=sqlite3.PARSE_DECLTYPES)
 
+    return db
 
-def create_tables(db):
+
+def create_tables(db: sqlite3.Connection):
     # Tables for end products
     # --------------------------------
 
@@ -215,3 +217,55 @@ def create_tables(db):
             active BOOL)
         """
     )
+
+
+def request_product(db: sqlite3.Connection, target_id):
+    return db.execute(
+        'SELECT * FROM ComputerProducts WHERE product_id=?',
+        (target_id,)
+    ).fetchall()
+
+def add_product(db: sqlite3.Connection,
+        product_id,
+        brand,
+        model,
+        form_factor,
+        processor,
+        memory,
+        graphics,
+        storage,
+        operating_system,
+        connectivity,
+        ports,
+        display,
+        other_features,
+        initial_system_cost,
+        initial_system_purchase_date):
+    db.execute(
+        'INSERT INTO ComputerProducts (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+        (product_id,
+        brand,
+        model,
+        form_factor,
+        processor,
+        memory,
+        graphics,
+        storage,
+        operating_system,
+        connectivity,
+        ports,
+        display,
+        other_features,
+        [],
+        [],
+        [],
+        [],
+        initial_system_cost,
+        initial_system_purchase_date,
+        0.00,
+        initial_system_cost,
+        False,
+        False,
+        date.fromisoformat('1969-04-20'))
+    )
+
